@@ -1,0 +1,33 @@
+#!/bin/bash
+mkdir /home/ec2-user/environmentsoft /home/ec2-user/java
+aws s3 cp s3://tim2015-11-29/jdk-8u65-linux-x64.tar.gz /home/ec2-user/environmentsoft
+tar -zxvf /home/ec2-user/environmentsoft/jdk-8u65-linux-x64.tar.gz
+mv jdk1.8.0_65/ /home/ec2-user/./java/
+rpm -e  --nodeps `rpm -qa|grep jdk`
+echo "export JAVA_HOME=/home/ec2-user/java/jdk1.8.0_65" >> /home/ec2-user/.bash_profile
+source /home/ec2-user/.bash_profile
+echo "export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib" >> /home/ec2-user/.bash_profile
+echo "export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/jre/bin" >> /home/ec2-user/.bash_profile
+source /home/ec2-user/.bash_profile
+
+mkdir /home/ec2-user/scrpys
+aws s3 cp s3://tim2015-11-29/fooddatacollector.jar /home/ec2-user/scrpys
+
+touch /home/ec2-user/scrpys/crontab_scanfile.sh
+mkdir /home/ec2-user/out
+chmod 777 /home/ec2-user/scrpys/crontab_scanfile.sh
+echo "#/bin/sh" >> /home/ec2-user/scrpys/crontab_scanfile.sh
+echo "sudo touch /home/ec2-user/out/out1.txt" >> /home/ec2-user/scrpys/crontab_scanfile.sh
+echo "sudo touch /home/ec2-user/out/out2.txt" >> /home/ec2-user/scrpys/crontab_scanfile.sh
+echo "sudo chmod -R 777 /home/ec2-user/out" >> /home/ec2-user/scrpys/crontab_scanfile.sh
+echo "aws s3 mv /home/ec2-user/out/ s3://tim2015-11-29/ --recursive" >> /home/ec2-user/scrpys/crontab_scanfile.sh
+
+#chmod o+w /etc/rc.d/rc.local
+#echo "java -jar /home/ec2-user/scrpys/fooddatacollector.jar /home/ec2-user/datas/fooddata" >> /etc/rc.d/rc.local
+#chmod o-w /etc/rc.d/rc.local
+
+chmod o+w /etc/crontab
+echo "*/2 * * * * ec2-user /home/ec2-user/scrpys/crontab_scanfile.sh" >> /etc/crontab
+chmod o-w /etc/crontab
+
+source /home/ec2-user/.bash_profile

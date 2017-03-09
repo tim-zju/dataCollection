@@ -1,0 +1,10 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=3eb8f6dd507c4e78e9533b9b803e58aa6a83e4a5
+eclipse.preferences.version=1
+encoding//src/main/java=utf8
+encoding//src/main/java/cn/ddcollection=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/instance.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/s3/s3test.jsp=UTF-8
+encoding//src/test/java=utf8
+encoding//src/test/java/cn/springmvc/test/TestEc2.java=UTF-8

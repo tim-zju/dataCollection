@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ddcollection.dao.Ec2InstanceDao">
+ 
+	<!-- 定义数据库字段与实体对象的映射关系 -->
+	<resultMap type="Ec2Instance" id="ec2InstanceResultMap">
+		<id property="id" column="id"/> 
+		<result property="ec2id" column="ec2id"/>
+		<result property="ec2name" column="name"/>
+		<result property="createtime" column="createtime"/>
+		<result property="description" column="description"/>
+		<result property="userdata" column="userdata"/>
+		<result property="region" column="region"/>
+		<result property="endpoint" column="endpoint"/>
+		<result property="state" column="state"/>
+		<result property="dcid" column="dcid"/>
+		<result property="userid" column="userid"/>
+		<result property="isschedule" column="isschedule"/>
+	</resultMap>
+	
+	<resultMap type="Ec2Instance" id="ec2ScheduleResultMap">
+		<result property="ec2id" column="ec2id"/>
+		<result property="ec2name" column="name"/>
+		<result property="description" column="username"/>
+		<result property="region" column="region"/>
+		<result property="state" column="state"/>
+		<result property="keyName" column="userkey"/>
+	</resultMap>
+	
+</mapper>

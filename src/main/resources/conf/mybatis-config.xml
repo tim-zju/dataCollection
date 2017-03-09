@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 命名空间 -->
+	<typeAliases>
+		<typeAlias alias="User" type="cn.ddcollection.model.User"/>
+		<typeAlias alias="Ec2Instance" type="cn.ddcollection.model.Ec2Instance"/>
+		<typeAlias alias="DataCollector" type="cn.ddcollection.model.DataCollector"/>
+		<typeAlias alias="UserAccount" type="cn.ddcollection.model.UserAccount"/>
+		<typeAlias alias="S3Object" type="cn.ddcollection.model.MyS3Object"/>
+        <typeAlias alias="RealTimePrc" type="cn.ddcollection.model.RealTimePrc"/> 
+	</typeAliases>
+ 
+	<!-- 映射map -->
+	<mappers>
+		<mapper resource="cn/ddcollection/model/User.xml" />
+		<mapper resource="cn/ddcollection/model/Ec2Instance.xml" />
+		<mapper resource="cn/ddcollection/model/DataCollector.xml" />
+		<mapper resource="cn/ddcollection/model/UserAccount.xml" />
+		<mapper resource="cn/ddcollection/model/MyS3Object.xml" />
+		<mapper resource="cn/ddcollection/model/RealTimePrc.xml" />
+	</mappers>
+</configuration>
